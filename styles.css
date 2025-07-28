@@ -426,6 +426,12 @@ footer {
     transform: translateY(-2px);
 }
 
+.footer-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 /* Hamburger Menu Button */
 .menu-toggle {
     display: none;
@@ -569,8 +575,11 @@ footer {
     }
 
     .footer-content {
-        text-align: center;
-    }
+    text-align: center;
+}
+
+.footer-links {
+    justify-content: center;
 }
 
 @media (max-width: 480px) {
