@@ -219,6 +219,57 @@ header {
     box-shadow: var(--shadow);
 }
 
+/* Home Page Headshot Styles */
+.home-headshot-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+    padding: 30px;
+    background: var(--light-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--accent-color);
+}
+
+.home-headshot {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-color);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.home-headshot:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.headshot-caption {
+    text-align: left;
+    max-width: 300px;
+}
+
+.headshot-caption p {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.headshot-caption p:first-child {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.headshot-caption p:last-child {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-style: italic;
+}
+
 /* Services Grid */
 .services-grid {
     display: grid;
