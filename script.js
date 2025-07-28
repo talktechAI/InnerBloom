@@ -6,45 +6,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentSections = document.querySelectorAll('.content-section');
     const menuToggle = document.getElementById('menu-toggle');
     const navButtonsContainer = document.getElementById('nav-buttons');
-    const navOverlay = document.getElementById('nav-overlay');
     
-    // Check if mobile elements exist before adding listeners
-    if (menuToggle && navButtonsContainer && navOverlay) {
-        // Mobile menu toggle
+    // Simple mobile menu toggle
+    if (menuToggle && navButtonsContainer) {
         menuToggle.addEventListener('click', function(e) {
             e.preventDefault();
             const isOpen = navButtonsContainer.classList.contains('open');
             
             if (isOpen) {
-                // Close menu
                 navButtonsContainer.classList.remove('open');
-                navOverlay.classList.remove('open');
                 menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
             } else {
-                // Open menu
                 navButtonsContainer.classList.add('open');
-                navOverlay.classList.add('open');
                 menuToggle.classList.add('active');
-                document.body.style.overflow = 'hidden';
             }
         });
 
-        // Close menu when clicking overlay
-        navOverlay.addEventListener('click', function() {
-            navButtonsContainer.classList.remove('open');
-            navOverlay.classList.remove('open');
-            menuToggle.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Close menu on window resize if desktop
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuToggle.contains(e.target) && !navButtonsContainer.contains(e.target)) {
                 navButtonsContainer.classList.remove('open');
-                navOverlay.classList.remove('open');
                 menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
             }
         });
     }
@@ -63,12 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(targetSection).classList.add('active');
             this.classList.add('active');
 
-            // Close mobile menu if open
-            if (menuToggle && navButtonsContainer && navOverlay && window.innerWidth <= 768) {
+            // Close mobile menu
+            if (navButtonsContainer) {
                 navButtonsContainer.classList.remove('open');
-                navOverlay.classList.remove('open');
                 menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
             }
         });
     });
