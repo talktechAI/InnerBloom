@@ -501,63 +501,49 @@ footer {
         display: flex;
     }
 
-    /* Hide regular nav on mobile */
-.nav-buttons {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 280px;
-    background: var(--white);
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    padding: 80px 20px 20px;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease-in-out;
-    z-index: 1002;
-    gap: 0;
-    pointer-events: auto;
-}
-
-    .nav-buttons.open {
-        right: 0;
-    }
-
-    .nav-button {
-        width: 100%;
-        margin-bottom: 10px;
-        text-align: center;
-        border: 1px solid var(--accent-color);
-        padding: 15px 20px;
-    }
-
-    /* Mobile overlay */
-.nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-    pointer-events: none;
-}
-
-.nav-overlay.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-    .about-container {
+.about-container {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 25px;
     }
+    
+    /* Simple dropdown menu on mobile */
+.nav-buttons {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    width: 250px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--accent-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    gap: 0;
+}
+
+.nav-buttons.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+    .nav-button {
+    width: 100%;
+    margin-bottom: 8px;
+    text-align: center;
+    border: 1px solid var(--accent-color);
+    padding: 12px 15px;
+}
+
+.nav-button:last-child {
+    margin-bottom: 0;
+}
 
     .about-image {
         margin: 0 auto;
