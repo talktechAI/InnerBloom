@@ -4,7 +4,38 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navButtons = document.querySelectorAll('.nav-button[data-section]');
     const contentSections = document.querySelectorAll('.content-section');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navButtonsContainer = document.getElementById('nav-buttons');
+    const navOverlay = document.getElementById('nav-overlay');
     
+    // Mobile menu toggle
+    menuToggle.addEventListener('click', function() {
+        const isOpen = navButtonsContainer.classList.contains('open');
+        
+        if (isOpen) {
+            // Close menu
+            navButtonsContainer.classList.remove('open');
+            navOverlay.classList.remove('open');
+            menuToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        } else {
+            // Open menu
+            navButtonsContainer.classList.add('open');
+            navOverlay.classList.add('open');
+            menuToggle.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+
+    // Close menu when clicking overlay
+    navOverlay.addEventListener('click', function() {
+        navButtonsContainer.classList.remove('open');
+        navOverlay.classList.remove('open');
+        menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Navigation functionality
     navButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -17,7 +48,25 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add active class to target section and button
             document.getElementById(targetSection).classList.add('active');
             this.classList.add('active');
+
+            // Close mobile menu if open
+            if (window.innerWidth <= 768) {
+                navButtonsContainer.classList.remove('open');
+                navOverlay.classList.remove('open');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
+    });
+
+    // Close menu on window resize if desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navButtonsContainer.classList.remove('open');
+            navOverlay.classList.remove('open');
+            menuToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
     
     // Form submission with flower animation
