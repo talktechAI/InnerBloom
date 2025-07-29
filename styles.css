@@ -49,7 +49,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .business-logo {
@@ -58,6 +58,12 @@ header {
     max-width: 160px;
     object-fit: contain;
     transition: var(--transition);
+}
+
+/* Logo container - centered */
+.logo-container {
+    text-align: center;
+    width: 100%;
 }
 
 .business-logo:hover {
@@ -69,13 +75,8 @@ header {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .nav-button:hover {
@@ -687,7 +688,7 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     header {
-        padding: 10px 0;
+        padding: 15px 0;
     }
 
     .header-content {
@@ -728,27 +729,28 @@ footer {
 .nav-buttons {
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
     background: var(--white);
     flex-direction: column;
-    width: 280px;
+    width: 100%;
     padding: 20px;
     box-shadow: var(--shadow);
     border-radius: var(--border-radius);
     border: 1px solid var(--accent-color);
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-50%) translateY(-10px);
+    transform: translateY(-10px);
     transition: all 0.3s ease;
     z-index: 1000;
     gap: 0;
+    justify-content: flex-start;
 }
 
 .nav-buttons.open {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
 }
 
     .nav-button {
@@ -821,15 +823,13 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-
     .business-logo {
         height: 45px;
         max-width: 160px;
     }
     
     .nav-buttons {
-        width: 260px;
+        width: 100%;
+        padding: 15px;
     }
+}
