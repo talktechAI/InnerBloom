@@ -743,22 +743,6 @@ footer {
     .services-grid {
         grid-template-columns: 1fr;
     }
-
-    .specialties-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 12px;
-    }
-    
-    .specialty-item {
-        padding: 10px 12px;
-        font-size: 0.9rem;
-    }
-    
-    .specialties-section,
-    .supervision-section {
-        padding: 20px;
-        margin-top: 30px;
-    }
     
     .footer-content {
     text-align: center;
