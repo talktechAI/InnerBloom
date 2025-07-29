@@ -54,9 +54,9 @@ header {
 }
 
 .business-logo {
-    height: 80px;
+    height: 50px;
     width: auto;
-    max-width: 300px;
+    max-width: 200px;
     object-fit: contain;
     transition: var(--transition);
 }
@@ -698,8 +698,8 @@ footer {
     }
     
 .business-logo {
-    height: 60px;
-    max-width: 250px;
+    height: 70px;
+    max-width: 300px;
 }
     
     /* Show hamburger menu on mobile */
@@ -831,6 +831,6 @@ footer {
     }
 
     .business-logo {
-    height: 50px;
-    max-width: 200px;
+    height: 60px;
+    max-width: 250px;
 }
