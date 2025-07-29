@@ -47,16 +47,15 @@ header {
 
 .header-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
     gap: 20px;
 }
 
 .business-logo {
-    height: 50px;
+    height: 40px;
     width: auto;
-    max-width: 200px;
+    max-width: 160px;
     object-fit: contain;
     transition: var(--transition);
 }
@@ -72,17 +71,11 @@ header {
     flex-wrap: wrap;
 }
 
-.nav-button {
-    padding: 12px 20px;
-    background: var(--white);
-    color: var(--primary-color);
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--transition);
-    border: 2px solid var(--accent-color);
-    white-space: nowrap;
+.nav-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .nav-button:hover {
@@ -108,7 +101,11 @@ header {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1001;
+    z-index: 1003;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
 }
 
 .menu-toggle span {
@@ -695,12 +692,13 @@ footer {
 
     .header-content {
         position: relative;
+        gap: 15px;
     }
     
-.business-logo {
-    height: 70px;
-    max-width: 300px;
-}
+    .business-logo {
+        height: 50px;
+        max-width: 180px;
+    }
     
     /* Show hamburger menu on mobile */
     .menu-toggle {
@@ -730,17 +728,18 @@ footer {
 .nav-buttons {
     position: absolute;
     top: 100%;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--white);
     flex-direction: column;
-    width: 250px;
+    width: 280px;
     padding: 20px;
     box-shadow: var(--shadow);
     border-radius: var(--border-radius);
     border: 1px solid var(--accent-color);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
+    transform: translateX(-50%) translateY(-10px);
     transition: all 0.3s ease;
     z-index: 1000;
     gap: 0;
@@ -749,7 +748,7 @@ footer {
 .nav-buttons.open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
 }
 
     .nav-button {
@@ -826,11 +825,11 @@ footer {
         padding: 0 15px;
     }
 
-    .nav-buttons {
-        width: 250px;
-    }
-
     .business-logo {
-    height: 60px;
-    max-width: 250px;
-}
+        height: 45px;
+        max-width: 160px;
+    }
+    
+    .nav-buttons {
+        width: 260px;
+    }
