@@ -422,6 +422,74 @@ header {
     font-size: 0.95rem;
 }
 
+/* Fees Section Styles */
+.fee-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 15px 0;
+    padding: 10px 15px;
+    background: var(--accent-color);
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid var(--secondary-color);
+}
+
+.insurance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.insurance-item {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 10px 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.insurance-item:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.insurance-item.pending {
+    background: var(--text-secondary);
+    color: var(--white);
+}
+
+.insurance-item.pending:hover {
+    background: var(--accent-color);
+    color: var(--text-primary);
+}
+
+.insurance-note {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--light-bg);
+    border-radius: 6px;
+    border-left: 4px solid var(--secondary-color);
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.contact-note {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--light-bg), var(--white));
+    border-radius: var(--border-radius);
+    border: 1px solid var(--accent-color);
+    text-align: center;
+    font-size: 1.1rem;
+}
+/* End of Supervision Fees*/
+
 /* Form Styles */
 .contact-form {
     max-width: 600px;
@@ -742,6 +810,37 @@ footer {
 
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Mobile adjustments for services and fees */
+    .specialties-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+    }
+    
+    .specialty-item {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .insurance-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+    }
+    
+    .insurance-item {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .fee-amount {
+        font-size: 1.2rem;
+        padding: 8px 12px;
+    }
+    
+    .contact-note {
+        padding: 15px;
+        font-size: 1rem;
     }
     
     .footer-content {
