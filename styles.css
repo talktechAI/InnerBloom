@@ -75,9 +75,19 @@ header {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: 1200px;
+}
+
+ .nav-button {
+    padding: 12px 20px;
+    background: var(--white);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    border: 2px solid var(--accent-color);
+    white-space: nowrap;
 }
 
 .nav-button:hover {
@@ -730,11 +740,10 @@ footer {
 .nav-buttons {
     position: absolute;
     top: 100%;
-    left: 0;
     right: 0;
     background: var(--white);
     flex-direction: column;
-    width: 100%;
+    width: 250px;
     padding: 20px;
     box-shadow: var(--shadow);
     border-radius: var(--border-radius);
@@ -745,7 +754,6 @@ footer {
     transition: all 0.3s ease;
     z-index: 1000;
     gap: 0;
-    justify-content: flex-start;
 }
 
 .nav-buttons.open {
@@ -829,8 +837,11 @@ footer {
         max-width: 160px;
     }
     
+    .container {
+        padding: 0 15px;
+    }
+
     .nav-buttons {
-        width: 100%;
-        padding: 15px;
+        width: 250px;
     }
 }
