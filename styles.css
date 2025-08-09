@@ -72,9 +72,9 @@ header {
 }
 
 .business-logo {
-    height: 180px; /* 3x larger than oringinal 60px*/
+    height: 120px; /* 3x larger than oringinal 60px reducing from 180*/
     width: auto;
-    max-width: 600px; /* 3x larger than original 200px */
+    max-width: 400px; /* 3x larger than original 200px reducing from 600 */
     object-fit: contain;
     transition: var(--transition);
     pointer-events: none; /* Prevents double-click issues */
