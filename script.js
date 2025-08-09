@@ -7,53 +7,49 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
     const navButtonsContainer = document.getElementById('nav-buttons');
     const logoContainer = document.querySelector('.logo-container');
-
-// Logo navigation functionality
-    const logoContainer = document.querySelector('.logo-container');
     
     if (logoContainer) {
         // Click handler for logo
         logoContainer.addEventListener('click', function(e) {
             e.preventDefault();
-            navigateToHome();
+            
+            // Remove active class from all sections and buttons
+            const allSections = document.querySelectorAll('.content-section');
+            const allNavButtons = document.querySelectorAll('.nav-button[data-section]');
+            
+            allSections.forEach(section => section.classList.remove('active'));
+            allNavButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to home section and home button
+            const homeSection = document.getElementById('home');
+            const homeButton = document.querySelector('.nav-button[data-section="home"]');
+            
+            if (homeSection) {
+                homeSection.classList.add('active');
+            }
+            if (homeButton) {
+                homeButton.classList.add('active');
+            }
+            
+            // Close mobile menu if open
+            if (navButtonsContainer && menuToggle) {
+                navButtonsContainer.classList.remove('open');
+                menuToggle.classList.remove('active');
+            }
+            
+            // Smooth scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
-        
+
         // Keyboard accessibility (Enter key)
         logoContainer.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                navigateToHome();
+                logoContainer.click(); // Trigger the click event
             }
-        });
-    }
-    
-    // Function to navigate to home
-    function navigateToHome() {
-        // Remove active class from all sections and buttons
-        contentSections.forEach(section => section.classList.remove('active'));
-        navButtons.forEach(btn => btn.classList.remove('active'));
-        
-        // Add active class to home section and home button
-        const homeSection = document.getElementById('home');
-        const homeButton = document.querySelector('.nav-button[data-section="home"]');
-        
-        if (homeSection) {
-            homeSection.classList.add('active');
-        }
-        if (homeButton) {
-            homeButton.classList.add('active');
-        }
-        
-        // Close mobile menu if open
-        if (navButtonsContainer && menuToggle) {
-            navButtonsContainer.classList.remove('open');
-            menuToggle.classList.remove('active');
-        }
-        
-        // Smooth scroll to top
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
         });
     }
     
