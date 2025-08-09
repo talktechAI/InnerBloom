@@ -57,6 +57,18 @@ header {
     text-align: center;
     width: 100%;
     padding: 10px 0; /* Added padding for better spacing*/
+    cursor: pointer; /* Shows it's clickable */
+    transition: var(--transition);
+}
+
+.logo-container:hover {
+    opacity: 0.8; /* Visual feedback on hover */
+}
+
+.logo-container:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    border-radius: var(--border-radius);
 }
 
 .business-logo {
@@ -65,6 +77,7 @@ header {
     max-width: 600px; /* 3x larger than original 200px */
     object-fit: contain;
     transition: var(--transition);
+    pointer-events: none; /* Prevents double-click issues */
 }
 
 .business-logo:hover {
