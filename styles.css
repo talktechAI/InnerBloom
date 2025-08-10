@@ -184,27 +184,33 @@ header {
     transform: translateY(0);
 }
 
+/* FIXED DROPDOWN ITEMS - Look Like Regular Nav Buttons */
 .dropdown-item {
     display: block;
     padding: 12px 20px;
+    background: var(--white);
     color: var(--primary-color);
     text-decoration: none;
-    transition: var(--transition);
-    border-bottom: 1px solid var(--light-bg);
+    border-radius: var(--border-radius);
     font-weight: 500;
     font-size: 0.95rem;
+    transition: var(--transition);
+    border: 2px solid var(--accent-color);
+    white-space: nowrap;
+    margin-bottom: 8px;
+    text-align: center;
 }
 
 .dropdown-item:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .dropdown-item:hover {
-    background: var(--light-bg);
-    color: var(--primary-color);
-    padding-left: 25px;
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
-
 /* Hamburger Menu Button */
 .menu-toggle {
     display: none;
@@ -948,10 +954,27 @@ footer {
         max-height: 200px;
     }
     
-    .dropdown-item {
-        padding: 10px 20px;
-        border-bottom: 1px solid var(--accent-color);
-    }
+    /* FIXED MOBILE DROPDOWN ITEMS */
+.dropdown-item {
+    padding: 12px 20px;
+    background: var(--white);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    border: 2px solid var(--accent-color);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.dropdown-item:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
     
     .about-image {
         margin: 0 auto;
