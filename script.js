@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
     const navButtonsContainer = document.getElementById('nav-buttons');
     const logoContainer = document.querySelector('.logo-container');
+    const resourcesDropdown = document.getElementById('resources-dropdown');
+    const resourcesTrigger = document.getElementById('resources-trigger');
+    const resourcesMenu = document.getElementById('resources-menu');
     
     if (logoContainer) {
         // Click handler for logo
@@ -44,6 +47,46 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
+        // Resources Dropdown functionality
+        
+        if (resourcesTrigger && resourcesMenu) {
+    // Toggle dropdown on click
+    resourcesTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isOpen = resourcesMenu.classList.contains('show');
+        
+        // Close all other dropdowns first (in case you add more later)
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.classList.remove('show');
+        });
+        document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
+            trigger.classList.remove('active');
+        });
+        
+        if (!isOpen) {
+            resourcesMenu.classList.add('show');
+            resourcesTrigger.classList.add('active');
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!resourcesDropdown.contains(e.target)) {
+            resourcesMenu.classList.remove('show');
+            resourcesTrigger.classList.remove('active');
+        }
+    });
+    
+    // Close dropdown on window resize if desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            resourcesMenu.classList.remove('show');
+            resourcesTrigger.classList.remove('active');
+        }
+    });
+}
         // Keyboard accessibility (Enter key)
         logoContainer.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
