@@ -589,6 +589,20 @@ header {
 }
 /* End of Supervision Fees*/
 
+/* Contact Widget Styles */
+.contact-widget-container {
+    max-width: 800px;
+    margin: 30px 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--accent-color);
+}
+
+.contact-widget-container iframe {
+    border-radius: var(--border-radius);
+}
+
 /* Form Styles */
 .contact-form {
     max-width: 600px;
