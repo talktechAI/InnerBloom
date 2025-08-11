@@ -40,6 +40,83 @@ function initEmailProtection() {
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize email protection first
     initEmailProtection();
+    initPhoneProtection();
+
+    function initPhoneProtection() {
+    // Base64 decode function for phone
+    function decodePhone(encoded) {
+        try {
+            return atob(encoded);
+        } catch(e) {
+            console.warn('Phone decode failed:', e);
+            return '623-850-1640'; // fallback
+        }
+    }
+    
+    // Simple digit deobfuscation (reverse of +5 shift)
+    function deobfuscatePhone(obfuscated) {
+        return obfuscated.split('').map(char => {
+            if (char >= '0' && char <= '9') {
+                // Reverse the +5 shift
+                return String.fromCharCode(((parseInt(char) - 5 + 10) % 10) + 48);
+            }
+            return char; // Keep dashes and other characters
+        }).join('');
+    }
+    
+    // Method 1: Base64 encoded phones
+    const base64PhoneElements = document.querySelectorAll('[data-phone-base64]');
+    base64PhoneElements.forEach(element => {
+        const encoded = element.getAttribute('data-phone-base64');
+        const phone = decodePhone(encoded);
+        
+        if (element.tagName.toLowerCase() === 'a') {
+            element.href = 'tel:' + phone;
+            element.textContent = phone;
+        } else {
+            element.innerHTML = `<a href="tel:${phone}" class="protected-phone">${phone}</a>`;
+        }
+    });
+    
+    // Method 2: Obfuscated phones
+    const obfuscatedPhoneElements = document.querySelectorAll('[data-phone-obfuscated]');
+    obfuscatedPhoneElements.forEach(element => {
+        const obfuscated = element.getAttribute('data-phone-obfuscated');
+        const phone = deobfuscatePhone(obfuscated);
+        
+        if (element.tagName.toLowerCase() === 'a') {
+            element.href = 'tel:' + phone;
+            element.textContent = phone;
+        } else {
+            element.innerHTML = `<a href="tel:${phone}" class="protected-phone">${phone}</a>`;
+        }
+    });
+    
+    // Method 3: Phone parts construction
+    const phonePartElements = document.querySelectorAll('[data-phone-area][data-phone-exchange][data-phone-number]');
+    phonePartElements.forEach(element => {
+        const area = element.getAttribute('data-phone-area');
+        const exchange = element.getAttribute('data-phone-exchange');
+        const number = element.getAttribute('data-phone-number');
+        const phone = area + '-' + exchange + '-' + number;
+        
+        if (element.tagName.toLowerCase() === 'a') {
+            element.href = 'tel:' + phone;
+            element.textContent = phone;
+        } else {
+            element.innerHTML = `<a href="tel:${phone}" class="protected-phone">${phone}</a>`;
+        }
+    });
+    
+    // Method 4: Simple class-based protection
+    const protectedPhoneElements = document.querySelectorAll('.phone-protect');
+    protectedPhoneElements.forEach(element => {
+        const phone = '623-850-1640'; // The actual phone
+        element.innerHTML = `<a href="tel:${phone}" class="protected-phone">${phone}</a>`;
+    });
+    
+    console.log('Phone protection initialized');
+}
     
     const navButtons = document.querySelectorAll('.nav-button[data-section]');
     const contentSections = document.querySelectorAll('.content-section');
