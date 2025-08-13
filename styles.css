@@ -125,6 +125,7 @@ header {
 .dropdown-trigger {
     display: flex !important;
     align-items: center;
+    justify-content: center !important;
     gap: 8px;
     cursor: pointer;
     border: none;
@@ -138,6 +139,9 @@ header {
     border: 2px solid var(--accent-color) !important;
     white-space: nowrap !important;
     text-decoration: none !important;
+    min-width: auto !important;
+    width: auto !important;
+    box-sizing: border-box !important;
 }
 
 .dropdown-trigger:hover {
