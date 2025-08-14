@@ -84,38 +84,6 @@ header {
     transform: scale(1.05);
 }
 
-/* Navigation */
-.nav-buttons {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
- .nav-button {
-    padding: 12px 20px;
-    background: var(--white);
-    color: var(--primary-color);
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--transition);
-    border: 2px solid var(--accent-color);
-    white-space: nowrap;
-}
-
-.nav-button:hover {
-    background: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-}
-
-.nav-button.active {
-    background: var(--primary-color);
-    color: var(--white);
-}
-
 /* Unified nav buttons, dropdown trigger, and dropdown items */
 .nav-button,
 .dropdown-trigger,
