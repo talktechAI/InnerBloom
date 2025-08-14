@@ -588,6 +588,146 @@ header {
 }
 /* End of Supervision Fees*/
 
+/* Good Faith Estimate Download Section */
+.gfe-download-section {
+    margin-top: 30px;
+}
+
+.gfe-download-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--accent-color);
+    box-shadow: var(--shadow);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.gfe-download-card h3 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.gfe-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--text-secondary);
+    margin: 0 auto 25px auto;
+    opacity: 0.3;
+}
+
+.gfe-download-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    text-align: justify;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.gfe-download-box {
+    background: var(--light-bg);
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 0 auto;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.gfe-download-title {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.gfe-download-btn {
+    background: #D2691E; /* Orange color to match the image */
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(210, 105, 30, 0.3);
+}
+
+.gfe-download-btn:hover {
+    background: #B8621E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(210, 105, 30, 0.4);
+}
+
+.gfe-download-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(210, 105, 30, 0.3);
+}
+
+/* Mobile responsiveness for GFE download section */
+@media (max-width: 768px) {
+    .gfe-download-card {
+        padding: 25px;
+    }
+    
+    .gfe-download-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .gfe-download-card p {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+    
+    .gfe-download-box {
+        padding: 20px;
+        max-width: 100%;
+    }
+    
+    .gfe-download-btn {
+        padding: 10px 25px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gfe-download-card {
+        padding: 20px;
+    }
+    
+    .gfe-download-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .gfe-download-box {
+        padding: 15px;
+    }
+    
+    .gfe-download-btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Contact Section */
 /* Contact Widget Styles */
 .contact-widget-container {
     max-width: 800px;
@@ -684,65 +824,6 @@ header {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
-}
-
-/* Flower Animation */
-.flower-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.flower-container.show {
-    opacity: 1;
-}
-
-.flower {
-    width: 60px;
-    height: 60px;
-    animation: growFlower 2s ease-out forwards;
-}
-
-@keyframes growFlower {
-    0% {
-        transform: scale(0) rotate(0deg);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.2) rotate(180deg);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1) rotate(360deg);
-        opacity: 1;
-    }
-}
-
-/* Success Message */
-.success-message {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
-    color: white;
-    padding: 15px 25px;
-    border-radius: var(--border-radius);
-    margin-top: 20px;
-    text-align: center;
-    display: none;
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Footer */
