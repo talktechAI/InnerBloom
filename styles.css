@@ -116,13 +116,10 @@ header {
     color: var(--white);
 }
 
-/* Resources Dropdown Styles */
-.nav-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-trigger {
+/* Unified nav buttons, dropdown trigger, and dropdown items */
+.nav-button,
+.dropdown-trigger,
+.dropdown-item {
     padding: 12px 20px;
     background: var(--white);
     color: var(--primary-color);
@@ -135,31 +132,49 @@ header {
     white-space: nowrap;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     cursor: pointer;
+    line-height: 1.2;
+    height: auto;
+    text-align: center;
 }
 
-.dropdown-trigger:hover {
-    background: var(--primary-color) !important;
-    color: var(--white) !important;
+.nav-button:hover,
+.dropdown-trigger:hover,
+.dropdown-item:hover {
+    background: var(--primary-color);
+    color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow);
 }
 
+.nav-button.active,
 .dropdown-trigger.active {
-    background: var(--primary-color) !important;
-    color: var(--white) !important;
+    background: var(--primary-color);
+    color: var(--white);
 }
 
+/* Pixel-perfect vertical alignment for dropdown arrow */
 .dropdown-arrow {
     font-size: 0.8rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(1px); /* fine-tune vertical alignment */
     transition: transform 0.3s ease;
 }
 
 .dropdown-trigger.active .dropdown-arrow {
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateY(-1px); /* stays aligned when rotated */
 }
 
+.dropdown-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Dropdown menu animation */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -171,7 +186,7 @@ header {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 1001;
     min-width: 200px;
     margin-top: 5px;
@@ -183,33 +198,6 @@ header {
     transform: translateY(0);
 }
 
-/* FIXED DROPDOWN ITEMS - Look Like Regular Nav Buttons */
-.dropdown-item {
-    display: block;
-    padding: 12px 20px;
-    background: var(--white);
-    color: var(--primary-color);
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--transition);
-    border: 2px solid var(--accent-color);
-    white-space: nowrap;
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.dropdown-item:last-child {
-    margin-bottom: 0;
-}
-
-.dropdown-item:hover {
-    background: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-}
 /* Hamburger Menu Button */
 .menu-toggle {
     display: none;
@@ -1097,29 +1085,7 @@ footer {
     .dropdown-menu.show {
         max-height: 200px;
     }
-    
-    /* FIXED MOBILE DROPDOWN ITEMS */
-.dropdown-item {
-    padding: 12px 20px;
-    background: var(--white);
-    color: var(--primary-color);
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--transition);
-    border: 2px solid var(--accent-color);
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.dropdown-item:hover {
-    background: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-}
-    
+        
     .about-image {
         margin: 0 auto;
         width: 200px;
@@ -1138,6 +1104,32 @@ footer {
         grid-template-columns: 1fr;
     }
 
+/* Mobile consistency for menu buttons */
+    .nav-button,
+    .dropdown-trigger,
+    .dropdown-item {
+        width: 100%;
+        padding: 12px 15px;
+        justify-content: center;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: var(--light-bg);
+    }
+    
+    .dropdown-menu.show {
+        max-height: 200px;
+}    
     /* Mobile adjustments for services and fees */
     .specialties-grid {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
