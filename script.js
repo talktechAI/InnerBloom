@@ -335,4 +335,14 @@ document.addEventListener('DOMContentLoaded', function() {
             day: 'numeric'
         });
     }
+
+        // Enable flip cards on mobile (tap support)
+    const specialties = document.querySelectorAll(".specialty-item");
+    specialties.forEach(item => {
+        item.addEventListener("click", function() {
+            if (window.innerWidth <= 768) {
+                this.classList.toggle("flipped");
+            }
+        });
+    });
 });
