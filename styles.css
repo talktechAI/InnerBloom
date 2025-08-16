@@ -929,6 +929,7 @@ footer {
         text-align: center;
         border: 1px solid var(--accent-color);
         padding: 12px 15px;
+        justify-content: center;
     }
 
     .nav-button:last-child {
@@ -941,7 +942,8 @@ footer {
     
     .dropdown-trigger {
         width: 100% !important;
-        justify-content: space-between !important;
+        justify-content: center !important;
+        text-align: center;
     }
     
     .dropdown-menu {
@@ -968,6 +970,8 @@ footer {
     .dropdown-item {
         margin-bottom: 8px;
         width: 100%;
+        justify-content: center;
+        text-align: center;
     }
 
     .about-container,
