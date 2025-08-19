@@ -45,43 +45,73 @@ header {
     backdrop-filter: blur(10px);
 }
 
+/* NEW HEADER LAYOUT */
 .header-content {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 20px !important;
+}
+
+.header-right {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 20px;
 }
 
-/* Logo container - centered */
+/* Logo positioning - left side */
 .logo-container {
-    text-align: center;
-    width: 100%;
-    padding: 10px 0;
+    text-align: left !important;
+    width: auto !important;
+    padding: 10px 0 !important;
     cursor: pointer;
     transition: var(--transition);
-}
-
-.logo-container:hover { 
-    opacity: 0.8; 
-}
-
-.logo-container:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 4px;
-    border-radius: var(--border-radius);
+    flex-shrink: 0;
 }
 
 .business-logo {
-    height: 120px;
+    height: 80px !important;
     width: auto;
-    max-width: 400px;
+    max-width: 300px;
     object-fit: contain;
     transition: var(--transition);
     pointer-events: none;
 }
 
-.business-logo:hover { 
-    transform: scale(1.05); 
+/* Book Appointment Button */
+.book-appointment-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: var(--transition);
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.book-appointment-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+/* Patient Portal Button Styling */
+.patient-portal {
+    background: var(--accent-color) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.patient-portal:hover {
+    background: var(--primary-color) !important;
+    color: var(--white) !important;
 }
 
 /* Navigation Buttons */
@@ -95,6 +125,7 @@ header {
     padding: 0;
     box-shadow: none;
     border: none;
+    flex-wrap: wrap;
 }
 
 .nav-button,
@@ -482,7 +513,110 @@ header {
     margin-bottom: 15px;
     font-size: 1.5rem;
 }
+/* PROCESS STEPS SECTION */
+.process-steps-container {
+    margin: 40px 0;
+    padding: 30px;
+    background: var(--light-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--accent-color);
+}
 
+.process-steps-container h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.process-step {
+    text-align: center;
+}
+
+.step-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.step-card {
+    position: relative;
+    height: 150px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.step-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.step-card:hover .step-inner,
+.step-card.flipped .step-inner {
+    transform: rotateY(180deg);
+}
+
+.step-front,
+.step-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.step-front {
+    background: var(--white);
+    color: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.step-back {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    transform: rotateY(180deg);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.inline-book-link {
+    color: var(--accent-color);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.inline-book-link:hover {
+    color: var(--white);
+    text-decoration: none;
+}
 /* Clinical Supervision Section */
 .supervision-section {
     margin-top: 40px;
@@ -860,9 +994,10 @@ footer {
         position: relative;
     }
 
-    .header-content {
-        position: relative;
-        gap: 15px;
+        .header-content {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
     }
     
     .logo-container {
@@ -973,6 +1108,66 @@ footer {
         justify-content: center;
         text-align: center;
     }
+        /* NEW MOBILE HEADER LAYOUT */
+    .header-right {
+        flex-direction: column;
+        gap: 15px;
+        position: relative;
+    }
+    
+    .logo-container {
+        text-align: center !important;
+        padding: 10px 0 !important;
+        order: 1;
+    }
+    
+    .business-logo {
+        height: 120px !important;
+        max-width: 400px !important;
+    }
+    
+    .book-appointment-btn {
+        order: 2;
+        align-self: center;
+        font-size: 0.9rem;
+        padding: 12px 20px;
+    }
+    
+    .menu-toggle {
+        order: 3;
+        align-self: center;
+    }
+    
+    .nav-buttons {
+        order: 4;
+    }
+    
+    /* Home page text alignment */
+    .content-section p,
+    .headshot-text p {
+        text-align: left !important;
+    }
+    
+    /* Process steps mobile */
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .step-card {
+        height: 120px;
+    }
+    
+    .step-front,
+    .step-back {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .step-back {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
 
     .about-container,
     .home-headshot-container {
@@ -1019,7 +1214,7 @@ footer {
         font-size: 0.75rem;
         line-height: 1.3;
     }
-    
+        
     .insurance-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 8px;
@@ -1105,6 +1300,24 @@ footer {
         width: 200px;
         right: 15px;
         padding: 12px;
+    }
+    .book-appointment-btn {
+    font-size: 0.8rem;
+    padding: 10px 15px;
+}
+
+    .step-card {
+        height: 100px;
+    }
+    
+    .step-front,
+    .step-back {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
+    
+    .step-back {
+        font-size: 0.75rem;
     }
 
     .specialties-grid {
