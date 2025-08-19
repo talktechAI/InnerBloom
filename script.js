@@ -267,59 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
-    // Form submission with flower animation (if form exists)
-    const form = document.getElementById('contact-form');
-    if (form) {
-        const submitBtn = form.querySelector('.submit-btn');
-        const flowerContainer = form.querySelector('.flower-container');
-        const successMessage = document.getElementById('success-message');
         
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Disable submit button
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-            }
-            
-            // Show flower animation
-            if (flowerContainer) {
-                flowerContainer.classList.add('show');
-            }
-            
-            // Simulate form submission
-            setTimeout(() => {
-                // Hide flower
-                if (flowerContainer) {
-                    flowerContainer.classList.remove('show');
-                }
-                
-                // Show success message
-                if (successMessage) {
-                    successMessage.style.display = 'block';
-                }
-                
-                // Reset form
-                form.reset();
-                
-                // Reset button
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                }
-                
-                // Hide success message after 5 seconds
-                if (successMessage) {
-                    setTimeout(() => {
-                        successMessage.style.display = 'none';
-                    }, 5000);
-                }
-            }, 2500);
-        });
-    }
-    
     // Set current year
     const currentYearElement = document.getElementById('current-year');
     if (currentYearElement) {
@@ -339,6 +287,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Enable flip cards on mobile (tap support)
     const specialties = document.querySelectorAll(".specialty-item");
     specialties.forEach(item => {
+        item.addEventListener("click", function() {
+            if (window.innerWidth <= 768) {
+                this.classList.toggle("flipped");
+            }
+        });
+    });
+        // Enable flip cards for process steps on mobile (tap support)
+    const processSteps = document.querySelectorAll(".step-card");
+    processSteps.forEach(item => {
         item.addEventListener("click", function() {
             if (window.innerWidth <= 768) {
                 this.classList.toggle("flipped");
