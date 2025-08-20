@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Inner Bloom Mental Wellness</title>
-  <meta name="description" content="Contact information and secure messaging for Inner Bloom Mental Wellness.">
+  <title>Contact Me | Inner Bloom Mental Wellness</title>
+  <meta name="description" content="Contact Inner Bloom Mental Wellness to request an appointment or send a secure message.">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
+  <!-- HEADER -->
+  <header>
     <div class="container">
       <div class="header-content">
         <div class="logo-container">
@@ -24,30 +25,8 @@
             <a href="about.html" class="nav-button">About</a>
             <a href="services.html" class="nav-button">Services</a>
             <a href="fees.html" class="nav-button">Fees</a>
-            <div class="nav-dropdown" id="resources-dropdown">
-              <button class="nav-button dropdown-trigger" id="resources-trigger">
-                Resources <span class="dropdown-arrow">▼</span>
-              </button>
-              <div class="dropdown-menu" id="resources-menu">
-                <a href="arizona-resources.html" class="dropdown-item">Arizona Resources</a>
-                <a href="indiana-resources.html" class="dropdown-item">Indiana Resources</a>
-              </div>
-            </div>
             <a href="faq.html" class="nav-button">FAQ</a>
-            <div class="nav-dropdown" id="contact-dropdown">
-              <button class="nav-button dropdown-trigger" id="contact-trigger">
-                Contact Me <span class="dropdown-arrow">▼</span>
-              </button>
-              <div class="dropdown-menu contact-menu" id="contact-menu">
-                <div class="contact-info">
-                  <p class="contact-label">Email:</p>
-                  <p><span data-email-base64="QW1hbmRhQGlubmVyYmxvb21tdy5jb20="></span></p>
-                  <p class="contact-label">Phone/Text:</p>
-                  <p><span data-phone-base64="NjIzLTg1MC0xNjQw"></span></p>
-                  <a href="https://amanda-spirek.clientsecure.me/contact-widget" target="_blank" class="contact-widget-link">Send Secure Message</a>
-                </div>
-              </div>
-            </div>
+            <a href="contact.html" class="nav-button active">Contact</a>
             <a href="https://amanda-spirek.clientsecure.me" class="nav-button patient-portal" target="_blank">Patient Portal</a>
           </nav>
           <a href="https://amanda-spirek.clientsecure.me" class="book-appointment-btn" target="_blank">BOOK AN APPOINTMENT</a>
@@ -55,19 +34,25 @@
       </div>
     </div>
   </header>
+
+  <!-- MAIN -->
   <main class="container">
-<section class="content-section" id="contact">
-<h2>Contact</h2>
-<p><strong>Email:</strong> <span data-email-base64="QW1hbmRhQGlubmVyYmxvb21tdy5jb20="></span></p>
-<p><strong>Phone/Text:</strong> <span data-phone-base64="NjIzLTg1MC0xNjQw"></span></p>
-<p><strong>Serving:</strong> Arizona and Indiana residents via telehealth</p>
-<div class="contact-widget-container">
-<iframe frameborder="0" height="600" scrolling="auto" src="https://amanda-spirek.clientsecure.me/contact-widget" title="Contact Amanda Spirek" width="100%">
-</iframe>
-</div>
-</section>
+    <section class="content-section">
+      <h2>Contact Me</h2>
+      <p>Please use the secure form below to send me a message. I will respond as soon as possible.</p>
+
+      <!-- SimplePractice embedded contact form -->
+      <iframe src="https://amanda-spirek.clientsecure.me/contact-widget"
+              style="width:100%; height:600px; border:none;"
+              title="Contact Form - Inner Bloom Mental Wellness">
+      </iframe>
+
+      <p class="note">If you are experiencing a mental health emergency, please call 911 or go to your nearest emergency room. Do not use this form for emergencies.</p>
+    </section>
   </main>
-<footer>
+
+  <!-- FOOTER -->
+  <footer>
     <div class="container footer-content">
       <p>&copy; <span id="current-year"></span> Inner Bloom Mental Wellness</p>
       <div class="footer-links">
@@ -75,6 +60,7 @@
       </div>
     </div>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
