@@ -166,13 +166,13 @@
     </div>
     
     <div class="header-right">
-        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    
-    <nav class="nav-buttons" id="nav-buttons">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+<nav class="nav-buttons" id="nav-buttons">
     <a href="#" class="nav-button" data-section="home">Home</a>
     <a href="#" class="nav-button" data-section="about">About</a>
     <a href="#" class="nav-button" data-section="services">Services</a>
@@ -190,6 +190,23 @@
             </div>
     
             <a href="#" class="nav-button" data-section="faq">FAQ</a>
+            
+            <!-- NEW CONTACT ME DROPDOWN -->
+            <div class="nav-dropdown" id="contact-dropdown">
+                <button class="nav-button dropdown-trigger" id="contact-trigger">
+                    Contact Me <span class="dropdown-arrow">▼</span>
+                </button>
+                <div class="dropdown-menu contact-menu" id="contact-menu">
+                    <div class="contact-info">
+                        <p class="contact-label">Email:</p>
+                        <p><span data-email-base64="QW1hbmRhQGlubmVyYmxvb21tdy5jb20="></span></p>
+                        <p class="contact-label">Phone/Text:</p>
+                        <p><span data-phone-base64="NjIzLTg1MC0xNjQw"></span></p>
+                        <a href="https://amanda-spirek.clientsecure.me/contact-widget" target="_blank" class="contact-widget-link">Send Secure Message</a>
+                    </div>
+                </div>
+            </div>
+            
             <a href="https://amanda-spirek.clientsecure.me" class="nav-button patient-portal" target="_blank">Patient Portal</a>
         </nav>
 
