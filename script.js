@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   setupDropdown('resources-trigger','resources-menu','resources-dropdown');
-  setupDropdown('contact-trigger','contact-menu','contact-dropdown');
 
   // Mobile Menu
   const menuToggle = document.getElementById('menu-toggle');
