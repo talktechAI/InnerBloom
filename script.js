@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initEmailProtection();
     initPhoneProtection();
     initContactNavigation();
+    initContactDropdown();
 
     function initPhoneProtection() {
     // Base64 decode function for phone
@@ -53,7 +54,54 @@ document.addEventListener('DOMContentLoaded', function() {
             return '623-850-1640'; // fallback
         }
     }
-    
+//Contact Dropdown
+    function initContactDropdown() {
+        const contactDropdown = document.getElementById('contact-dropdown');
+        const contactTrigger = document.getElementById('contact-trigger');
+        const contactMenu = document.getElementById('contact-menu');
+        
+        if (contactTrigger && contactMenu) {
+            // Toggle dropdown on click
+            contactTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isOpen = contactMenu.classList.contains('show');
+                
+                // Close all other dropdowns first
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
+                    trigger.classList.remove('active');
+                });
+                
+                if (!isOpen) {
+                    contactMenu.classList.add('show');
+                    contactTrigger.classList.add('active');
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!contactDropdown.contains(e.target)) {
+                    contactMenu.classList.remove('show');
+                    contactTrigger.classList.remove('active');
+                }
+            });
+            
+            // Close dropdown on window resize if desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    contactMenu.classList.remove('show');
+                    contactTrigger.classList.remove('active');
+                }
+            });
+        }
+        
+        console.log('Contact dropdown initialized');
+    }
+        
     // Simple digit deobfuscation (reverse of +5 shift)
     function deobfuscatePhone(obfuscated) {
         return obfuscated.split('').map(char => {
