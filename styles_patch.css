@@ -1,0 +1,8 @@
+/* Patch for multipage version */
+.content-section {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
