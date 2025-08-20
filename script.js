@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize email protection first
     initEmailProtection();
     initPhoneProtection();
+    initContactNavigation();
 
     function initPhoneProtection() {
     // Base64 decode function for phone
