@@ -213,6 +213,11 @@ header {
     margin-bottom: 0; 
 }
 
+.contact-menu {
+    min-width: 250px;
+    padding: 15px;
+}
+
 /* Hamburger Menu Button */
 .menu-toggle {
     display: none;
