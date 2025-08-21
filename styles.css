@@ -980,6 +980,15 @@ footer {
     flex-wrap: wrap;
 }
 
+/* Psychology Today badge placement */
+.nav-buttons .verified-seal {
+  display: block;            /* puts seal on its own line */
+  width: 100%;
+  text-align: center;        /* centers the badge */
+  margin-top: 6px;           /* spacing under Resources */
+  margin-bottom: 6px;        /* spacing before FAQ */
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     header {
