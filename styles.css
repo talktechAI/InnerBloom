@@ -125,7 +125,7 @@ header {
     padding: 0;
     box-shadow: none;
     border: none;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .nav-button,
