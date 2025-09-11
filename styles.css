@@ -1045,6 +1045,7 @@ footer {
         z-index: 1002;               
     }
     .nav-buttons.open {
+        flex;
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
