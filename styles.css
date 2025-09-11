@@ -1027,24 +1027,23 @@ footer {
     }
 
     .nav-buttons {
+        display: none;
         position: absolute;
         top: 100%;
-        right: 0;
+        left: 0;                    
+        right: 0;                  
         background: var(--white);
         flex-direction: column;
-        width: 250px;
-        padding: 20px;
+        width: 100%;                    
+        padding: 16px;                 
         box-shadow: var(--shadow);
-        border-radius: var(--border-radius);
+        border-radius: 0;               
         border: 1px solid var(--accent-color);
+        transform: translateY(-10px);
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
-        z-index: 1000;
-        gap: 0;
+        z-index: 1002;               
     }
-
     .nav-buttons.open {
         opacity: 1;
         visibility: visible;
