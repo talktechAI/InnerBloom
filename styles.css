@@ -1434,8 +1434,8 @@ footer {
 
 .pt-badge {
   position: absolute;
-  top: -18px;         /* lift slightly to visually nest with the card top */
-  right: 24px;        /* align with card padding */
+  top: 14px;         /* lift slightly to visually nest with the card top */
+  right: 22px;        /* align with card padding */
   z-index: 5;
 }
 
