@@ -1416,25 +1416,6 @@ footer {
 }
 .btn-outline:hover { border-color: #d1d5db; }
 
-/* Verified badge under Resources row */
-.verified-row {
-  display: flex;
-  justify-content: center;
-  padding: 6px 0 10px 0;
-}
-.verified-row .verified-seal {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--white);
-  border: 1px solid #e5e7eb;
-  border-radius: 999px;
-  padding: 6px 10px;
-  box-shadow: var(--shadow);
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
 /* Mobile menu keeps existing toggle behavior (uses #nav-buttons) */
 @media (max-width: 768px) {
   .nav-buttons.editorial {
@@ -1446,5 +1427,29 @@ footer {
   }
   .header-actions {
     display: flex;
+  }
+}
+/* === Psychology Today badge placement (top-right of hero card) === */
+.content-section { position: relative; }  /* ensures absolute children anchor to the card */
+
+.pt-badge {
+  position: absolute;
+  top: -18px;         /* lift slightly to visually nest with the card top */
+  right: 24px;        /* align with card padding */
+  z-index: 5;
+}
+
+/* Keep the existing verified seal look; this wrapper only positions it */
+.pt-badge .verified-seal {
+  display: inline-block;
+}
+
+/* Mobile: drop it into the flow and center it */
+@media (max-width: 768px) {
+  .pt-badge {
+    position: static;
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 12px;
   }
 }
