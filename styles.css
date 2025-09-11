@@ -1119,11 +1119,12 @@ footer {
         max-width: 400px !important;
     }
     
-    .book-appointment-btn {
-        order: 2;
-        align-self: center;
-        font-size: 0.9rem;
-        padding: 12px 20px;
+    .book-appointment-btn { 
+        display: none !important; 
+    }
+
+    .patient-portal { 
+        display: none !important; 
     }
     
     .menu-toggle {
