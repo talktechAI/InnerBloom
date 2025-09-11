@@ -1350,3 +1350,101 @@ footer {
         font-size: 0.8rem;
     }
 }
+
+
+/* === Editorial Header Variant === */
+.nav-buttons.editorial {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  flex-wrap: wrap;
+}
+
+.nav-buttons.editorial .nav-link {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  line-height: 1;
+  position: relative;
+}
+
+.nav-buttons.editorial .nav-link:hover,
+.nav-buttons.editorial .nav-link:focus {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* Dropdown caret alignment */
+.dropdown-trigger .dropdown-arrow {
+  display: inline-block;
+  transform: translateY(-1px);
+  margin-left: 4px;
+}
+
+/* Actions (Portal + Book) */
+.header-actions {
+  display: none;
+  gap: 12px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .header-actions { display: flex; }
+}
+
+.btn-outline {
+  border: 1px solid #e5e7eb;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: saturate(180%) blur(8px);
+  color: var(--text-primary);
+  padding: 10px 16px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.btn-outline:hover { border-color: #d1d5db; }
+
+/* Verified badge under Resources row */
+.verified-row {
+  display: flex;
+  justify-content: center;
+  padding: 6px 0 10px 0;
+}
+.verified-row .verified-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 6px 10px;
+  box-shadow: var(--shadow);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Mobile menu keeps existing toggle behavior (uses #nav-buttons) */
+@media (max-width: 768px) {
+  .nav-buttons.editorial {
+    gap: 16px;
+  }
+  .nav-buttons.editorial .nav-link {
+    padding: 8px 0;
+    display: block;
+  }
+  .header-actions {
+    display: flex;
+  }
+}
