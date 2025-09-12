@@ -74,7 +74,12 @@ header {
     max-width: 300px;
     object-fit: contain;
     transition: var(--transition);
-    pointer-events: none;
+    cursor: pointer;
+}
+
+.logo-container:hover .business-logo {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 /* ================ NAVIGATION ================ */
