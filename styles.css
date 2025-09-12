@@ -1017,6 +1017,34 @@ footer {
         display: none !important;
     }
 
+    /* Mobile Book Appointment Button */
+    .mobile-book-appointment {
+        display: block !important;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: var(--white) !important;
+        padding: 15px 25px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        text-align: center;
+        transition: var(--transition);
+        white-space: nowrap;
+        box-shadow: var(--shadow);
+        border: none !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 10px;
+        margin-bottom: 0;
+        width: 100%;
+    }
+    
+    .mobile-book-appointment:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    }
+
     /* PT Badge Mobile */
     .pt-badge {
         position: static;
