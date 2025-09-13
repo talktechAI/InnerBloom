@@ -8,6 +8,16 @@
 const PRIVACY_ACKNOWLEDGED_KEY = 'innerbloom_privacy_acknowledged';
 const BANNER_DISMISSED_DAYS = 30;
 
+function lsGet(key) {
+  try { return localStorage.getItem(key); } catch { return null; }
+}
+function lsSet(key, value) {
+  try { localStorage.setItem(key, value); } catch { /* ignore */ }
+}
+function lsRemove(key) {
+  try { localStorage.removeItem(key); } catch { /* ignore */ }
+}
+
 // Show privacy banner
 function showPrivacyBanner() {
     const banner = document.getElementById('privacyBanner');
@@ -24,14 +34,15 @@ function dismissBanner() {
         banner.classList.add('hide');
         banner.classList.remove('show');
         
-        // Remember dismissal
-        localStorage.setItem(PRIVACY_ACKNOWLEDGED_KEY, new Date().toISOString());
+        // Remember dismissal if possible
+        lsSet(PRIVACY_ACKNOWLEDGED_KEY, new Date().toISOString());
     }
 }
 
 // Acknowledge with "Got it" button
 function acknowledgeBanner() {
     dismissBanner();
+    loadUmamiAnalytics();
 }
 
 // Learn more - go to privacy policy
@@ -40,31 +51,30 @@ function learnMore() {
 }
 
 // Check if user has already acknowledged privacy notice
-function checkPrivacyStatus() {
-    const acknowledged = localStorage.getItem(PRIVACY_ACKNOWLEDGED_KEY);
+    function checkPrivacyStatus() {
+      // Force show for desktop testing: add ?forceBanner=1 to the URL
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('forceBanner') === '1') {
+        setTimeout(showPrivacyBanner, 300);
+        loadUmamiAnalytics(); // still loads cookieless
+        return;
+      }
     
-    if (!acknowledged) {
+      const acknowledged = lsGet(PRIVACY_ACKNOWLEDGED_KEY);
+    
+      if (!acknowledged) {
         // Show banner after 2 seconds on first visit
-        setTimeout(() => {
-            showPrivacyBanner();
-        }, 2000);
-    } else {
-        // Check if it's been more than 30 days
+        setTimeout(showPrivacyBanner, 2000);
+      } else {
+        // Show again after 30 days
         const acknowledgedDate = new Date(acknowledged);
-        const daysSince = (new Date() - acknowledgedDate) / (1000 * 60 * 60 * 24);
-        
+        const daysSince = (Date.now() - acknowledgedDate.getTime()) / 86400000;
         if (daysSince > BANNER_DISMISSED_DAYS) {
-            // Show again after 30 days
-            setTimeout(() => {
-                showPrivacyBanner();
-            }, 2000);
+          setTimeout(showPrivacyBanner, 2000);
         }
+      }
     }
     
-    // Always load analytics immediately (cookieless)
-    loadUmamiAnalytics();
-}
-
 // Load Umami Analytics with HIPAA compliance checks
 function loadUmamiAnalytics() {
     // List of pages that should NEVER be tracked (PHI risk)
