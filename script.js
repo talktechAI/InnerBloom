@@ -89,4 +89,116 @@ document.addEventListener('DOMContentLoaded', function() {
       year: 'numeric', month: 'long', day: 'numeric'
     });
   }
+  // ============================================
+// PRIVACY NOTICE & ANALYTICS
+// ============================================
+
+// Constants
+const PRIVACY_ACKNOWLEDGED_KEY = 'innerbloom_privacy_acknowledged';
+const BANNER_DISMISSED_DAYS = 30;
+
+// Check if user has already acknowledged privacy notice
+function checkPrivacyStatus() {
+    const acknowledged = localStorage.getItem(PRIVACY_ACKNOWLEDGED_KEY);
+    
+    if (!acknowledged) {
+        // Show banner after 2 seconds on first visit
+        setTimeout(() => {
+            showPrivacyBanner();
+        }, 2000);
+    } else {
+        // Check if it's been more than 30 days
+        const acknowledgedDate = new Date(acknowledged);
+        const daysSince = (new Date() - acknowledgedDate) / (1000 * 60 * 60 * 24);
+        
+        if (daysSince > BANNER_DISMISSED_DAYS) {
+            // Show again after 30 days
+            setTimeout(() => {
+                showPrivacyBanner();
+            }, 2000);
+        }
+    }
+    
+    // Always load analytics immediately (cookieless)
+    loadUmamiAnalytics();
+}
+
+// Show privacy banner
+function showPrivacyBanner() {
+    const banner = document.getElementById('privacyBanner');
+    if (banner) {
+        banner.classList.add('show');
+        banner.classList.remove('hide');
+    }
+}
+
+// Dismiss banner with X button
+function dismissBanner() {
+    const banner = document.getElementById('privacyBanner');
+    if (banner) {
+        banner.classList.add('hide');
+        banner.classList.remove('show');
+        
+        // Remember dismissal
+        localStorage.setItem(PRIVACY_ACKNOWLEDGED_KEY, new Date().toISOString());
+    }
+}
+
+// Acknowledge with "Got it" button
+function acknowledgeBanner() {
+    dismissBanner();
+}
+
+// Learn more - go to privacy policy
+function learnMore() {
+    window.location.href = 'privacy.html';
+}
+
+// Load Umami Analytics with HIPAA compliance checks
+function loadUmamiAnalytics() {
+    // List of pages that should NEVER be tracked (PHI risk)
+    const EXCLUDED_PAGES = [
+        '/patient-portal',
+        '/booking',
+        '/appointment',
+        '/intake',
+        '/assessment',
+        '/treatment'
+    ];
+    
+    // Check if current page should be tracked
+    const currentPath = window.location.pathname.toLowerCase();
+    for (let excluded of EXCLUDED_PAGES) {
+        if (currentPath.includes(excluded)) {
+            console.log('Analytics: Page excluded for HIPAA compliance');
+            return; // Don't load analytics
+        }
+    }
+    
+    // Check for PHI keywords in URL
+    const fullUrl = window.location.href.toLowerCase();
+    const phiKeywords = ['patient', 'medical', 'diagnosis', 'treatment-plan'];
+    for (let keyword of phiKeywords) {
+        if (fullUrl.includes(keyword)) {
+            console.log('Analytics: URL contains potential PHI');
+            return; // Don't load analytics
+        }
+    }
+    
+    // Safe to load Umami
+    const script = document.createElement('script');
+    script.defer = true;
+    script.setAttribute('data-website-id', '53e70764-9e1e-4efb-9855-4f5a9df9cb96');
+    script.setAttribute('data-domains', 'innerbloommw.com'); 
+    script.src = 'https://cloud.umami.is/script.js';
+    
+    document.head.appendChild(script);
+}
+
+// Initialize privacy notice on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkPrivacyStatus);
+} else {
+    checkPrivacyStatus();
+}
 });
