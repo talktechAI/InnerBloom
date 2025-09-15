@@ -196,10 +196,12 @@
             margin: 0.75in;
         }
     </style>
+  <link rel="stylesheet" href="/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <div class="header">
-        <img src="/ibhome.png" alt="Inner Bloom Mental Wellness Logo" class="logo">
+        <img src="ibhome.png" alt="Inner Bloom Mental Wellness Logo" class="logo">
         <div class="business-name">Inner Bloom Mental Wellness</div>
         <div class="tagline">Nurturing growth, healing, and resilience</div>
     </div>
@@ -269,5 +271,16 @@
             document.head.appendChild(style);
         });
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var logo = document.querySelector('img[src$="ibhome.png"]');
+  if (logo) {
+    logo.addEventListener('error', function(){
+      // fallback path commonly used in repos
+      logo.src = '/images/ibhome.png';
+    });
+  }
+});
+</script>
 </body>
 </html>
